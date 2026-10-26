@@ -1,9 +1,6 @@
-from spellchecker import SpellChecker
-spell=SpellChecker()
+def fib(n):
+    if n<=2:
+        return 1
+    return fib(n-1)+fib(n-2)
 
-while True:
-    word=input()
-    if not spell.unknown([word]):
-        print(word+" is goed")
-    else:
-        print("nieet foood")
+print(fib(10))
