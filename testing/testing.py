@@ -1,93 +1,32 @@
-list={
+folder_hierarchy = {
+    "name": "level 1 directory",
     "children": [
-        {"children": [], "value": 74},
         {
+            "name": "level 2 directory A",
             "children": [
-                {
-                    "children": [
-                        {"children": [], "value": 44},
-                        {"children": [], "value": 35},
-                        {"children": [], "value": 67},
-                        {"children": [], "value": 66},
-                    ],
-                    "value": 60,
-                },
-                {
-                    "children": [
-                        {"children": [], "value": 21},
-                        {"children": [], "value": 47},
-                        {"children": [], "value": 71},
-                    ],
-                    "value": 36,
-                },
-                {
-                    "children": [
-                        {"children": [], "value": 25},
-                        {"children": [], "value": 18},
-                    ],
-                    "value": 24,
-                },
+                {"name": "level 3 directory A1", "children": []},
+                {"name": "level 3 directory A2", "children": []},
             ],
-            "value": 89,
         },
         {
-            "children": [
-                {
-                    "children": [
-                        {"children": [], "value": 75},
-                        {"children": [], "value": 73},
-                    ],
-                    "value": 36,
-                },
-                {
-                    "children": [
-                        {"children": [], "value": 55},
-                        {"children": [], "value": 9},
-                    ],
-                    "value": 78,
-                },
-            ],
-            "value": 80,
+            "name": "level 2 directory B",
+            "children": [ {"name": "level 3 directory B1", "children": []} ],
         },
         {
+            "name": "level 2 directory C",
             "children": [
-                {
-                    "children": [
-                        {"children": [], "value": 35},
-                        {"children": [], "value": 26},
-                        {"children": [], "value": 100},
-                        {"children": [], "value": 75},
-                        {"children": [], "value": 45},
-                    ],
-                    "value": 78,
-                },
-                {
-                    "children": [
-                        {"children": [], "value": 41},
-                        {"children": [], "value": 45},
-                    ],
-                    "value": 9,
-                },
-                {
-                    "children": [
-                        {"children": [], "value": 40},
-                        {"children": [], "value": 28},
-                    ],
-                    "value": 12,
-                },
+                {"name": "level 3 directory C1", "children": []},
+                {"name": "level 3 directory C2", "children": []},
+                {"name": "level 3 directory C3", "children": []},
             ],
-            "value": 9,
         },
     ],
-    "value": 55,
 }
-def zoek(list:dict,getal:int):
-    for i,item in enumerate(list["children"]):
-        if item["value"]==getal:
-            return [i]
-        answer=zoek(item,getal)
-        if answer is not None:
-            return [i]+answer
+
+def zoek(list:dict):
+    print(list["name"])
+    for item in list["children"]:zoek(item)
+        
 
 
-print(zoek(list,21))
+print(zoek(folder_hierarchy))
