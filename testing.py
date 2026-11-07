@@ -1,23 +1,20 @@
-from pathlib import Path, PurePath
-
-
-
-def main():
-    p=input("geef je path\n>")
-    p=Path(p)
-    if not p.is_dir():
-        print("path is geen directory")
-        return
-
-    print("dit is een directory. Dit zijn de files er in")
-
-    for f in list(p.glob("*.py")):
-        print(f.name)
-
-    pass
+import re 
 
 
 
 
-if __name__=="__main__":
-    main()
+email=input(">")
+tld=[".com",".be",".it",".nl"]
+
+m=re.fullmatch(r"(?P<user>\w+)@(?P<provider>\w+)(?P<domain>\.\w+)",email)
+if m==None:
+    print("not valid")
+elif m.group("domain") not in tld:
+    print("not valid top level domain or domain is not supported")
+else:
+    print("valid")
+
+    print(f"user is: {m.group("user")}")
+    print(f" provider is: {m.group("provider")}")
+    print(f"domain is: {m.group("domain")}")
+
