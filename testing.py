@@ -1,9 +1,23 @@
-months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-numMonths=[f"{i}. {month[0:3].upper()}" for i,month in enumerate(months,1) if len(month)<=5]
-print(numMonths)
-"""zo houd ik ook nog de originele maand namen. sorry dit maakte meer sense voor mij"""
+from pathlib import Path, PurePath
 
 
-months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-numMonths=[f"{i}. {month[0:3].upper()}" for i,month in enumerate([m for m in months if len(m)<=5],1) ]
-print(numMonths)
+
+def main():
+    p=input("geef je path\n>")
+    p=Path(p)
+    if not p.is_dir():
+        print("path is geen directory")
+        return
+
+    print("dit is een directory. Dit zijn de files er in")
+
+    for f in list(p.glob("*.py")):
+        print(f.name)
+
+    pass
+
+
+
+
+if __name__=="__main__":
+    main()
